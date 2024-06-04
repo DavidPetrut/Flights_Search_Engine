@@ -1,0 +1,29 @@
+<!-- login.component.html -->
+<div class="flex justify-center items-center h-screen signUpContainer mt-0 mb-0" style="background-image: url('https://images.pexels.com/photos/4004016/pexels-photo-4004016.jpeg'); background-size: cover; background-position: center;">
+    <div class="w-full max-w-md p-6 bg-gray-800 bg-opacity-90 rounded-lg shadow-lg">
+      <h1 class="text-white text-2xl mb-4 font-bold text-center">Login</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+        <div class="mb-4">
+          <label for="email" class="block text-white text-sm font-bold mb-2">
+            <!-- FontAwesome icon usage might differ in Angular -->
+            Email
+          </label>
+          <input formControlName="email" type="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Email" required />
+        </div>
+        <div class="mb-6">
+          <label for="password" class="block text-white text-sm font-bold mb-2">
+            <!-- FontAwesome icon usage might differ in Angular -->
+            Password
+          </label>
+          <input formControlName="password" type="password" id="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="**********" required />
+        </div>
+        <div class="flex items-center justify-center">
+          <button [disabled]="isLoading" class="text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline w-full" type="submit">
+            {{ isLoading ? 'Logging In...' : 'Login' }}
+          </button>
+        </div>
+        <div *ngIf="alertMsg" class="{{alertColor}} mt-2 text-center">{{alertMsg}}</div>
+      </form>
+    </div>
+  </div>
+  

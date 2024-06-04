@@ -1,0 +1,333 @@
+<app-second-search-engine></app-second-search-engine>
+<div class="container">
+    <h2 class="my-4 ms-5">Checkout Flight</h2>
+</div>
+<div class="main-cont container">
+    <div class="row mb-4 g-lg-5">
+        <div class="col-lg-8 ms-5 me-4 mb-4">
+
+
+
+            <!-- CHECKOUT FOR SINGLE TICKET -->
+            <div *ngIf="isSingleTicket" class="checkout-container mb-5">
+                <div class="container checkoutTicketResults mb-5">
+                    <div class="row pb-4">
+                        <div class="col-lg-6">
+                            <h5>First Itinerary: Flight</h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <span class="float-end colorSpecial"><i class="fa-solid fa-plane-circle-check"></i></span>
+                        </div>    
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-lg-6">
+                            <span><img src="{{ selectedTicket?.logoURL }}" class="logo-ticket" alt=""></span>
+                            <h5> Departure: </h5>
+                            <span> {{selectedTicket?.companyName}} | {{selectedTicket?.flightCode}}</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <span class="float-end"><i class="fa-regular fa-calendar me-1"></i> {{ selectedTicket?.flightDay }}</span>
+                        </div>    
+                    </div> 
+                    <div class="row">
+                        <div class="col-lg-2"><i class="fa-regular fa-clock me-2"></i><span>{{ selectedTicket?.departureTime | date: 'HH:mm a' }}</span></div>
+                        <div class="col-lg-3"> <hr></div>
+                        <div class="col-lg-3"><i class="fa-regular fa-clock me-2 ms-4"></i><span>{{selectedTicket?.arrivalTime | date: 'HH:mm a'}}</span></div>
+                        <div class="col-lg-2"> <hr></div>
+                        <div class="col-lg-2"><i class="fa-solid fa-clock-rotate-left me-1"></i>{{selectedTicket?.flightTime }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2"><span>{{selectedTicket?.fullNameDeparture }}</span></div>
+                        <div class="col-lg-3"><span class="ps-5 smallerText">No stops</span></div>
+                        <div class="col-lg-2 me-5"><span>{{selectedTicket?.fullNameArrival }} </span></div>
+                        <div class="col-lg-4 smallerText">Small bag included.</div>
+                    </div>
+                </div>
+            </div>
+            <!-- SINGLE TICKET FINISHED -->
+
+
+
+            
+            
+            <!-- CHECKOUT FOR COMBINED TICKET -->
+            <!--CHE FIRST - SELECTED FLIGHT DETAILS -->
+            <div *ngIf="!isSingleTicket" class="checkout-container mb-5">
+
+                 <!-- first flight details(first ticket) -->
+                <div class="container checkoutTicketResults mb-5">
+                    <div class="row pb-4">
+                        <div class="col-lg-6">
+                            <h5>First Itinerary: Flight</h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <span class="float-end colorSpecial"><i class="fa-solid fa-plane-circle-check"></i></span>
+                        </div>    
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-lg-6">
+                            <span><img src="{{ selectedTicket?.departureFlight.logoURL }}" class="logo-ticket" alt=""></span>
+                            <h5> Departure: </h5>
+                            <span> {{selectedTicket?.departureFlight.companyName}} | {{selectedTicket?.departureFlight.flightCode}}</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <span class="float-end"><i class="fa-regular fa-calendar me-1"></i> {{ selectedTicket?.departureFlight.flightDay }}</span>
+                        </div>    
+                    </div> 
+                    <div class="row">
+                        <div class="col-lg-2"><i class="fa-regular fa-clock me-2"></i><span>{{ selectedTicket?.departureFlight.departureTime | date: 'HH:mm a' }}</span></div>
+                        <div class="col-lg-3"> <hr></div>
+                        <div class="col-lg-3"><i class="fa-regular fa-clock me-2 ms-4"></i><span>{{selectedTicket?.departureFlight.arrivalTime | date: 'HH:mm a'}}</span></div>
+                        <div class="col-lg-2"> <hr></div>
+                        <div class="col-lg-2"><i class="fa-solid fa-clock-rotate-left me-1"></i>{{selectedTicket?.departureFlight.flightTime }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2"><span>{{selectedTicket?.departureFlight.fullNameDeparture }}</span></div>
+                        <div class="col-lg-3"><span class="ps-5 smallerText">No stops</span></div>
+                        <div class="col-lg-2 me-5"><span>{{selectedTicket?.departureFlight.fullNameArrival }} </span></div>
+                        <div class="col-lg-4 smallerText">Small bag included.</div>
+                    </div>
+                </div>
+
+
+            <!-- second flight details(return) -->
+                <div class="container checkoutTicketResults mb-5">
+                    <div class="row pb-4">
+                        <div class="col-lg-6">
+                            <h5>Second Itinerary: Flight</h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <span class="float-end colorSpecial"><i class="fa-solid fa-plane-circle-check"></i></span>
+                        </div>    
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-lg-6">
+                            <span><img src="{{ selectedTicket?.returnFlight.logoURL }}" class="logo-ticket" alt=""></span>
+                            <h5> Return: </h5>
+                            <span> {{selectedTicket?.returnFlight.companyName}} | {{selectedTicket?.returnFlight.flightCode}}</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <span class="float-end"><i class="fa-regular fa-calendar me-1"></i> {{ selectedTicket?.returnFlight.flightDay }}</span>
+                        </div>    
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2"><i class="fa-regular fa-clock me-2"></i><span>{{selectedTicket?.returnFlight.departureTime | date: 'HH:mm a' }}</span></div>
+                        <div class="col-lg-3"> <hr></div>
+                        <div class="col-lg-3"><i class="fa-regular fa-clock me-2 ms-4"></i><span>{{selectedTicket?.returnFlight.arrivalTime | date: 'HH:mm a'}}</span></div>
+                        <div class="col-lg-2"> <hr></div>
+                        <div class="col-lg-2"><i class="fa-solid fa-clock-rotate-left me-1"></i>{{selectedTicket?.returnFlight.flightTime }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2"><span>{{selectedTicket?.returnFlight.fullNameDeparture }}</span></div>
+                        <div class="col-lg-3"><span class="ps-5 smallerText">No stops</span></div>
+                        <div class="col-lg-2 me-5"><span>{{selectedTicket?.returnFlight.fullNameArrival }} </span></div>
+                        <div class="col-lg-4 smallerText">Small bag included.</div>
+                    </div>
+                </div>         
+            </div>
+
+
+
+
+
+            <!-- Choose support plan -->
+            <div class="checkout-container mb-5">
+                <div class="container checkoutTicketResults mb-5">
+                    <div class="row pb-4">
+                        <h5>Choose support plan</h5>
+                        <span>Upgrade for better support during your flight!</span>
+                    </div>
+                    <div class="container pe-0 ps-0">
+                        <div class="row">
+                            <div class="col-lg-6 d-flex flex-column align-content-start pe-1 ps-0 colorSpecial pt-1">
+                                <div class="d-flex flex-column bg-table-title hide">
+                                    <h5 class="fw-bold">Basic</h5>
+                                    <h6>+ £71.53</h6>
+                                </div>
+                                <div class="bg-table leftAlign"><span class="bg-inherit"><i class="fa-solid fa-calendar-days me-2 specialIcon"></i> Date or time changes</span></div>
+                                <div class="bg-table-gray leftAlign"><span class="bg-inherit"><i class="fa-solid fa-file-circle-check me-2 specialIcon"></i>Change booking fee</span></div>
+                                <div class="bg-table leftAlign"><span class="bg-inherit"><i class="fa-solid fa-headset me-2 specialIcon"></i> High priority assistance</span></div>
+                                <div class="bg-table-gray leftAlign"><span class="bg-inherit"><i class="fa-solid fa-circle-dollar-to-slot me-2 specialIcon"></i> Refundable ticket</span></div>
+                            </div>
+                            
+                            <div [class.recomandedBorder]="selectedPlanIndex === 0" class="col-lg-2 d-flex flex-column justify-content-center p-1">
+                                <div class="d-flex flex-column bg-table-title colorSpecial">
+                                    <h5 class="fontLight">Basic</h5>
+                                    <h6>£0</h6>
+                                </div>
+                                <div class="bg-table"><span class="bg-inherit">Fees apply </span></div>
+                                <div class="bg-table-gray"><span class="bg-inherit">Fees apply </span></div>
+                                <div class="bg-table"><i class="fa-solid fa-xmark bg-inherit"></i></div>
+                                <div class="bg-table-gray"><i class="fa-solid fa-check bg-inherit"></i></div>
+                                <div class="bg-table moveBottom"><button class="button btn-primary fareButtonSelect mb-3" (click)="selectPaymentPlan('+ £0', 0)">Select</button></div>
+                            </div>
+
+                            <div [class.recomandedBorder]="selectedPlanIndex === 1" class="col-lg-2 d-flex flex-column justify-content-center p-1 recomandedBorder">
+                                <div class="d-flex flex-column bg-table-title">
+                                    <h5 class="fw-bold recommendedPlan">Premium</h5>
+                                    <h6 class="colorSpecial">+£19.99</h6>
+                                </div>
+                                <div class="bg-table"><span class="bg-inherit">Free</span></div>
+                                <div class="bg-table-gray"><span class="bg-inherit">Free</span></div>
+                                <div class="bg-table"><i class="fa-solid fa-xmark bg-inherit"></i></div>
+                                <div class="bg-table-gray"><i class="fa-solid fa-check bg-inherit"></i></div>
+                                <div class="bg-table moveBottom"><button class="button btn-primary fareButtonSelect mb-3"  (click)="selectPaymentPlan('+ £19.99', 1)">Select</button></div>
+                            </div>
+
+                            <div [class.recomandedBorder]="selectedPlanIndex === 2" class="col-lg-2 d-flex flex-column justify-content-center p-1">
+                                <div class="d-flex flex-column bg-table-title colorSpecial">
+                                    <h5 class="fw-bold">Business</h5>
+                                    <h6>+£29.99</h6>
+                                </div>
+                                <div class="bg-table"><span class="bg-inherit">Free</span></div>
+                                <div class="bg-table-gray"><span class="bg-inherit">Free</span></div>
+                                <div class="bg-table"><i class="fa-solid fa-check bg-inherit"></i></div>
+                                <div class="bg-table-gray"><i class="fa-solid fa-check bg-inherit"></i></div>
+                                <div class="bg-table moveBottom"><button class="button btn-primary fareButtonSelect mb-3" (click)="selectPaymentPlan('+ £29.99', 2)">Select</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- COMBINED TICKET FINISHED -->
+
+
+
+
+
+            <!-- Bag | Luggage Type -->
+            <div class="checkout-container mb-5">
+                <div class="container checkoutTicketResults mb-5">
+                    <div class="row pb-4">
+                        <h5>Bag | Luggage type</h5>
+                        <div class="infoBag pt-3 mb-2">
+                            <p class="colorSpecial fw-semibold">Select your ideal bag type for a comfortable, hassle-free journey!</p>
+                            <span class="specialText me-2">One free small handbag for each passenger</span> <span class="text-danger fw-semibold">x10 kg - (40x20x30cm) </span>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div [class.bagDivClicked]="selectedBagIndex === 0" class="col-lg-4 bagDiv" (click)="selectBag('free', 0)">
+                            <h5><i class="fa-solid fa-bag-shopping pe-1 bagIcon"></i> <span class="bagKgText ps-1">free small bag</span></h5>
+                            <div class="contentBagDiv">
+                                <span class="textColor">Subject to airline's specific size and weight restrictions.</span>
+                                <p class="textColor">(40x20x30cm)</p>
+                                <p class="bagExtraPrice fw-semibold">free</p>
+                            </div>
+                        </div>
+                        <div [class.bagDivClicked]="selectedBagIndex === 1" class="col-lg-4 bagDiv" (click)="selectBag('+£29.99', 1)">
+                            <h5 class="bagKgText">+<i class="fa-solid fa-suitcase-rolling ps-1 pe-1 bagIcon"></i><span>(15kg)</span></h5>
+                            <div class="contentBagDiv">
+                                <span class="textColor">Avoid sky-high baggage fees at the airport</span>
+                                <p class="textColor">(40x30x30cm)</p>
+                                <p class="bagExtraPrice fw-semibold">+£29.99</p>
+                            </div>
+                        </div>
+                        <div [class.bagDivClicked]="selectedBagIndex === 2" class="col-lg-4 bagDiv" (click)="selectBag('+£49.99', 2)">
+                            <h5 class="bagKgText">+<i class="fa-solid fa-suitcase ps-1 pe-1 bagIcon"></i><span>(30kg)</span></h5>
+                            <div class="contentBagDiv">
+                                <span class="textColor">If you require bigger transportation luggage</span>
+                                <p class="textColor">(50x40x40cm)</p>
+                                <p class="bagExtraPrice fw-semibold">+£49.99</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- Contact details -->
+            <div class="checkout-container"> 
+                <div class="container checkoutTicketResults mb-5 ps-0 pe-0 mt-3"> 
+                    <form [formGroup]="checkoutForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6 inputAreaDiv">
+                                <input type="email" class="form-control inputArea" placeholder="Email" formControlName="email" required>
+                            </div>
+                            <div class="col-md-6 inputAreaDiv">
+                                <input type="email" class="form-control inputArea" placeholder="Confirm email" formControlName="confirmEmail" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 inputAreaDiv">
+                                <select class="form-control inputArea" formControlName="prefixPhoneNumber" required>
+                                  <option value="" disabled selected hidden>United Kingdom (+44) ↓ </option>
+                                  <option *ngFor="let code of countryCodes" [value]="code.dial_code">
+                                    {{ code.name + " (" + code.dial_code + ")" }}
+                                  </option>
+                                </select>
+                              </div>
+                            <div class="col-md-6 inputAreaDiv">
+                                <input type="number" class="form-control inputArea" placeholder="Phone number" formControlName="phoneNumber" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 inputAreaDiv">
+                                <input type="text" class="form-control inputArea" placeholder="Address" formControlName="address" required>
+                            </div>
+                            <div class="col-md-6 inputAreaDiv">
+                                <input type="text" class="form-control inputArea" placeholder="Postcode" formControlName="postcode" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 inputAreaDiv">
+                                <input type="text" class="form-control inputArea" placeholder="City" formControlName="city" required>
+                            </div>
+                            <div class="col-md-6 inputAreaDiv">
+                                <select class="form-control inputArea" formControlName="country" required>
+                                  <option value="" disabled selected hidden>Country ↓</option>
+                                  <option *ngFor="let code of countryCodes">
+                                    {{ code.name }}
+                                  </option>
+                                </select>
+                              </div>
+                        </div>
+                        <!-- Additional form elements like submit button can be added here -->
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- Total -->
+            <div class="container mt-5">
+                <div class="row">
+                    <div *ngIf="isStudentVerified && !studentOfferUsed" class="mb-3">
+                        <button class="button bg-[#343D4A] text-white py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:-translate-y-1 btn-special-offer" (click)="applyStudentDiscount()">Special Offer for Students -50%</button>
+                      </div>
+                    <div class="col-lg-12 d-flex justify-content-end">
+                        <div class="totalPay px-2">
+                                <span *ngIf="submitAttempted && !checkoutForm.valid" class="alert-popup">
+                                    All Personal Details must be completed!
+                                </span>
+                            <span class="total px-2">Total to Pay: <span class="initial-price">£{{ selectedTicket?.totalOldTicketPrice }}</span> 
+                            </span> <span class="new-price">£{{ selectedTicket?.totalNewTicketPrice }}</span>
+
+                                
+
+
+                        </div>
+                        <button class="button btn-change" (click)="handleCheckout()">Checkout</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+        <div class="col-lg-3">
+            <app-single-card></app-single-card>
+        </div>
+    </div>
+</div>
+

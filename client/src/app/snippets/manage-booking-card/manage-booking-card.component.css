@@ -1,0 +1,20 @@
+.deal {
+    text-wrap: nowrap;
+}
+
+.fa-solid {
+    font-size: 30px;
+    color: var(--subtitle-advert);
+}
+
+.col-lg-6{
+    width: 500px;
+}
+
+.card-individual{
+    background-color: white;
+    padding-top: 20px;
+    padding-left: 20px;
+    cursor: pointer;
+    border-radius: 16px 16px 16px 16px !important;
+}

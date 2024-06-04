@@ -1,0 +1,54 @@
+.all {
+    background-color: #F5F5F5;
+}
+
+.banner {
+    background: 
+    linear-gradient(rgba(1, 1, 73, 0.6), rgba(0, 0, 0, 0.6)), 
+    url('https://images.pexels.com/photos/2038832/pexels-photo-2038832.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: white;
+    height: 30rem;
+}
+
+.fa-solid {
+    font-size: 28px;
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
+
+.banner p, .banner h2 {
+    margin: 0;
+}
+
+.advert-banner {
+    background-color: var(--banner-advert);
+    margin-bottom: -47px;
+    margin-top: -47px;
+}
+
+.row {
+    padding-top:30px
+}
+
+.social-media-icons > * {
+    margin-top: 35px;
+    font-size: 35px;
+    padding-right: 0.5rem;
+    cursor: pointer;
+}
+
+.phone-icons > * {
+    font-size: 40px;
+    padding-right: 0.5rem;
+}
+
+
+@media (max-width: 768px) {
+    .banner {
+        height: auto; /* Auto height for mobile devices */
+        background-size: cover; /* Adjust background size for mobile */
+    }
+}

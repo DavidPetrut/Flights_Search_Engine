@@ -1,0 +1,56 @@
+.specialPadding3{
+    padding-top: 200px;
+    background-image: url("./../../../assets/img/pexels-rachel-claire-5863541.jpg");
+    background-color: #F2F2F2;
+    background-repeat: no-repeat;
+    background-position: center center; 
+    background-size: cover; 
+}
+
+#updateProfile {
+    padding-top: 200px;
+    padding-bottom: 1000px;
+
+}
+
+.questionInputRow {
+    padding-left: 10px;
+}
+
+.profileBTN {
+    background-color: transparent !important;
+}
+
+.profileBTNRemove {
+    border: 2px dotted red;
+}
+
+.profileBTNRemove:hover {
+    border: 1px solid red;
+    background-color: rgb(250, 74, 74) !important;
+}
+
+.bottomBTNAdd {
+    border: 2px solid rgb(149, 149, 254);
+}
+
+.bottomBTNAdd:hover {
+    font-weight: bold;
+    border: 1px solid rgb(149, 149, 254);
+    background-color: rgb(63, 63, 253) !important;
+}
+
+.bottomBTNSave {
+    border: 2px solid rgb(2, 203, 2);
+}
+
+.bottomBTNSave:hover {
+    font-weight: bold;
+    border: 1px solid rgb(2, 203, 2);
+    background-color: rgb(0, 161, 0) !important;
+}
+
+.horizontalLine {
+    color: #F2F2F2;
+    border: 1.5px solid #F2F2F2;
+}

@@ -1,0 +1,250 @@
+* {
+    color: #6F6F6F
+}
+
+.container {
+    margin: 23px 5px;
+}
+
+.flight {
+    text-wrap: nowrap;
+    font-size: 12px;
+    background-color: #F2F2F2;
+    padding: 0 8px;
+    border-radius: 25px;
+}
+
+.container-flight {
+    height: 20px;
+    margin-top: 2px;
+
+}
+
+.fa-arrow-right-long{
+    color: #308BB2;
+    font-size: 14px;
+    justify-content: center;
+    margin-top: 2px;
+}
+.fa-plane {
+    color: #308BB2;
+}
+.company {
+    text-wrap: nowrap !important;
+}
+.company-icon {
+    font-size: 30px;
+    margin-top: -7px;
+}
+
+.company-icon i {
+    color: rgb(210, 224, 107);
+}
+
+.time {
+    color: #4C4C4C;
+    font-weight: bold;
+}
+
+.destination {
+    padding-left: 35px;
+}
+
+.hr-end {
+    color: rgb(185, 184, 184);
+}
+.price {
+    color: #FF6600;
+}
+
+.first-half-ticket{
+    border-right: 3px dotted #CBCBCB;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px 10px 10px 5px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1)
+}
+.second-half-ticket{
+    background-color: white;
+    padding: 15px;
+    border-radius: 12px 5px 5px 12px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1)
+}
+
+.singleFirstHalfTicket {
+    font-size: larger;
+}
+
+.status {
+    color: #4C4C4C;
+    font-weight: bold;
+}
+
+.leaf {
+    color: #209B87;
+    font-size: 13px;
+}
+.eco {
+    color: #209B87;
+    font-weight: bold;
+}
+.info {
+    font-size: 14px;
+    color: #209B87;
+    cursor: pointer;
+}
+
+.initial-price {
+    text-decoration: line-through;
+    color: #6F6F6F;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.new-price {
+    color: #272727;
+    font-weight: 650;
+    font-size: 30px;
+}
+.fst-italic {
+    color: #209B87;
+    margin-top: -7px;
+}
+
+.search-button {
+    padding: 8px 74px !important;
+}
+
+.search-button:hover {
+    background-color: #fd9753;
+        
+}
+
+.fa-circle-question {
+    cursor: pointer;
+}
+
+
+
+
+
+.logo-ticket {
+    height: 50px !important;
+    width: 50px !important;
+    margin-right: 1px !important;
+    padding-right: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+
+.logo-ticket-itinerary {
+    height: 80px !important;
+    width: 80px !important;
+    object-fit: contain !important;
+}
+
+.itinerary {
+    text-align: left !important;
+}
+
+.itinerary p {
+    font-size: smaller;
+}
+.itinerary h1, h2, h3, h4, h5 {
+    font-size: smaller;
+}
+
+.button-x {
+    margin-left: 100px !important;
+    cursor: pointer;
+}
+
+.numberPassangersPopup {
+    font-size: 13px;    
+}
+
+.priceNamePopupInfo {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+
+
+
+
+/* pop-up styling in case of the no flights found */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+.overlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.779); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+.popup {
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.btn-change {
+    border: none;
+    width: 100%;
+    background-color: #FF6600;
+    color: white;
+    font-weight: 670;
+    border-radius: 25px 25px 25px 25px;
+    padding: 13px;
+    margin-top: 20px;
+}
+
+.btn-change:hover {
+    background-color: #fc8b40;
+}
+
+
+
+/* co2 popup */
+
+.info-icon-container {
+    position: relative; /* This makes the positioning  for the popup relative with its parent ticket, is important */
+  }
+
+.co2-popup {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    font-size: 13px;
+    width: 150%;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100; 
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 14px;
+    transform: translateX(-50%); 
+    font-weight: 600;
+} 

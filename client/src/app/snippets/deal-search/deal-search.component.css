@@ -1,0 +1,68 @@
+.search > * {
+    float: right !important;
+    text-align: right;
+    justify-content: right;
+}
+
+.fa-hand-holding-dollar {
+    font-size: 97px;
+    color: #FDA528;
+}
+
+.advert {
+    float: left !important;
+    text-align: left;
+    justify-content: left;
+}
+
+.word1 {
+    color: #002C52;
+    font-weight: bold;
+    font-size: 50px;
+}
+.word2 {
+    font-family: "Segoe UI";
+    color: #002C52;
+    font-weight: 10;
+    margin-top: -25px;
+    font-size: 50px;
+}
+.word3 {
+    color : #DF443D;
+    font-weight: 650;
+    margin-top: -10px;
+}
+
+.deal-finder {
+    font-size: 16px;
+    border-radius: 3%;
+    padding-left: 10px;
+    padding-right: 23px;
+    padding-bottom: 22px;
+    padding-top: 21px;
+}
+
+.btn-deal {
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.btn-deal:hover {
+    background-color: white;
+    color: #011a30
+}
+
+.icon-passanger{
+    font-size: 22px;
+    color: #002C52;
+}
+
+.number-passanger {
+    color: #002C52;
+    font-weight: 500;
+    font-size: 22px;
+    padding-right: 12px;
+}

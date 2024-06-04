@@ -1,0 +1,13 @@
+.buttonProfileUpdate {
+    background-color: #760376;
+    font-weight: 700;
+    color: white;
+    border: 3px solid #FF5450;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  
+  .buttonProfileUpdate:hover {
+    background-color: #4b2d4a;
+  }
+  

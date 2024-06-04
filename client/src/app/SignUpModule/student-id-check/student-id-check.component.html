@@ -1,0 +1,35 @@
+<div *ngIf="!isVerified; else verifiedContent" class="">
+    <div *ngIf="showAlert" class="fixed inset-x-0 top-0 z-50 flex items-center justify-center p-4 mb-4 text-sm font-semibold text-white shadow-md fs-4" [class.bg-green-500]="isSuccessAlert" [class.bg-red-500]="!isSuccessAlert">
+        <div class="flex items-center justify-center flex-grow">
+            <span class="text-center text-white">{{ alertMessage }}</span>
+        </div>
+        <button (click)="showAlert = false" class="ml-4 bg-white text-sm hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            OK
+        </button>
+    </div>
+
+
+    <div>
+        <button *ngIf="!displayVerificationPopup" (click)="displayVerificationPopup = true" class="w-100 py-4 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 buttonProfileUpdate">
+            ARE YOU A STUDENT? VERIFY NOW YOUR ACCOUNT AS A STUDENT AND GET INSTANT REWARDS!
+        </button>
+        <div *ngIf="displayVerificationPopup" class="space-y-3">
+            <input [(ngModel)]="studentNumber" type="text" placeholder="Student number" pattern="\d{5,12}" title="Student number must be between 5 to 12 digits." required class="w-full px-4 py-2 border rounded-md focus:ring focus:ring-opacity-50 focus:ring-indigo-300">
+            <input [(ngModel)]="selectedUniversity" type="text" placeholder="Type your university website" class="w-full px-4 py-2 border rounded-md focus:ring focus:ring-opacity-50 focus:ring-indigo-300">
+            <input [(ngModel)]="studentEmail" type="email" placeholder="Enter your student email" class="w-full px-4 py-2 border rounded-md focus:ring focus:ring-opacity-50 focus:ring-indigo-300">
+            <button (click)="onVerifyEmail()" class="w-full px-4 py-2 text-white rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75" style="background-color: #760376;">
+                Verify Student Email
+            </button>
+            <input #verificationCodeInput type="text" placeholder="Verification Code" class="w-full px-4 py-2 border rounded-md focus:ring focus:ring-opacity-50 focus:ring-indigo-300" *ngIf="verificationSent">
+            <button (click)="onVerifyCode()" class="w-full px-4 py-2 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" *ngIf="verificationSent" style="background-color: #E5E4D0; font-weight: bold;">
+                Verify Code
+              </button>
+        </div>
+    </div>
+</div>
+
+<ng-template #verifiedContent>
+    <div class="bg-gray-100 p-4 text-center">
+        <h3 class="text-lg font-medium">Student Account Verified</h3>
+    </div>
+</ng-template>

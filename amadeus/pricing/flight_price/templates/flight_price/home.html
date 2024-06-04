@@ -1,0 +1,192 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'pricing/style/style.css' %}">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#inputOrigin").autocomplete({
+                    source: "{% url 'origin_airport_search'%}",
+                    minLength: 1,
+                    delay: 200,
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#inputDestination").autocomplete({
+                    source: "{% url 'destination_airport_search'%}",
+                    minLength: 1,
+                    delay: 200,
+                });
+            });
+            </script>
+        <style>
+            /* .imageBackground {
+                background-image: url('../../static/pricing/style/travel_ease_ltd_background_image.jpeg');
+                background-size: cover;
+                background-position: center;
+              } */
+
+              .container-fluid {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh;
+                    background: url('../../static/pricing/style/travel_ease_ltd_background_image.jpeg') no-repeat center center;
+                    background-size: cover;
+                }
+
+                .login {
+                    background-color: rgba(31, 41, 55, 0.9); /* bg-gray-800 bg-opacity-90 */
+                    padding: 2rem;
+                    border-radius: 0.5rem; /* rounded-lg */
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+                    overflow-y: auto;
+                    max-height: 150vh;
+                }
+
+                /* Typography */
+                h3 {
+                    color: #f9fafb; /* text-white */
+                    text-align: center;
+                    margin: 1.25rem 0; /* my-5 */
+                    font-size: 1.875rem; /* text-3xl */
+                }
+
+                /* Form Elements */
+                input[type="text"],
+                input[type="date"],
+                select,
+                textarea {
+                    background-color: #1F2937; /* bg-gray-700 */
+                    color: #D1D5DB; /* text-gray-300 */
+                    border: 1px solid #4B5563; /* border-gray-600 */
+                    border-radius: 0.375rem; /* rounded */
+                    padding: 0.75rem 1rem; /* py-3 px-4 */
+                    margin-top: 0.25rem; /* mt-1 */
+                    width: 100%; /* w-full */
+                    box-sizing: border-box;
+                    focus:outline-none;
+                }
+
+                input[type="text"]:focus,
+                input[type="date"]:focus,
+                select:focus,
+                textarea:focus {
+                    background-color: #374151; /* focus:bg-gray-600 */
+                    border-color: #6B7280; /* focus:border-gray-500 */
+                }
+
+                /* Buttons */
+                .btn {
+                    display: inline-block;
+                    font-weight: bold; /* font-weight-bold */
+                    text-align: center;
+                    vertical-align: middle;
+                    padding: 0.75rem 1rem; /* py-2 px-4 */
+                    font-size: 1rem;
+                    border-radius: 0.375rem; /* rounded */
+                    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+                                border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                }
+
+                .btn-primary {
+                    background-color: transparent; /* bg-blue-500 */
+                    border: 2px solid white;
+                    color: #ffffff; /* text-white */
+                }
+                
+                .btn-primary:hover {
+                    background-color: transparent; /* bg-blue-500 */
+                    border: 2px solid white;
+                    color: #ffffff; /* text-white */
+                    font-weight: bold;
+                }
+
+                .btn-login {
+                    width: 100%; /* btn-block */
+                    margin-bottom: 0.5rem; /* mb-2 */
+                }
+
+                /* Utilities */
+                .text-danger {
+                    color: #EF4444; /* text-red-500 */
+                }
+        </style>
+        <title>Travel-Ease Prediction engine</title>
+    </head>
+
+    <body>
+        <div class="container-fluid flex justify-content-center imageBackground">
+          <div class="row no-gutter justify-content-center mb-5">
+            <div class="col-lg-12 justify-content-center m-3"></div>
+              <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-9 col-lg-8 mx-auto">
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li class="text-danger">{% if message.tags %}{% endif %}{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                      <h3 class="login-heading mb-4">Travel-Ease Prediction Engine</h3>
+                      <form action="" method="POST" id="form_id"> {% csrf_token %}
+                          <div class="form-label-group">
+                              <input type="text" name="Origin" id="inputOrigin"
+                                     class="form-control" placeholder="From" required autofocus>
+                              <label for="inputOrigin">From</label>
+                          </div>
+
+                          <div class="form-label-group">
+                              <input type="text" name="Destination" id="inputDestination"
+                                     class="form-control" placeholder="To" required autofocus>
+                              <label for="inputDestination">To</label>
+                          </div>
+                          <div class="form-label-group">
+                              <input type="date" name="Departuredate" id="idDeparturedate"
+                                     class="form-control" placeholder="Departure Date" required>
+                              <label for="idDeparturedate">Departure Date</label>
+                          </div>
+
+                          <div class="form-label-group">
+                              <input type="date" name="Returndate" id="idReturndate"
+                                     class="form-control" placeholder="Return Date">
+                              <label for="idReturndate">Return Date</label>
+                          </div>
+                          <input class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="Submit" name="Submit" value="Search Flight" />
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            $("#form_id").on("submit", function (e) {
+            e.preventDefault(); //stop submit event
+            var self = $(this);
+            var originGiven = $("#inputOrigin").val();
+            $("#inputOrigin").val(originGiven.slice(0,3));
+            var destinationGiven = $("#inputDestination").val();
+            $("#inputDestination").val(destinationGiven.slice(0,3));
+            $("#form_id").off("submit");
+            self.submit();
+        });
+        </script>
+    </body>
+</html>

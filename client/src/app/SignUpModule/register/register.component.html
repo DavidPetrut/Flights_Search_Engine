@@ -1,0 +1,46 @@
+<div class="flex justify-center items-center h-screen signUpContainer mt-0 mb-0" style="background-image: url('https://images.pexels.com/photos/4004016/pexels-photo-4004016.jpeg'); background-size: cover; background-position: center;">
+    <div class="w-full max-w-md p-6 bg-gray-800 bg-opacity-90 rounded-lg shadow-lg formContainer">
+      <h1 class='text-white text-2xl mb-4 font-bold text-center'>Sign Up</h1>
+      <form [formGroup]="signUpForm" (ngSubmit)="handleSignUp()">
+        <!-- Username field -->
+        <div class="mb-4">
+          <label class="block text-white text-sm font-bold mb-2" for="username">
+            Username
+          </label>
+          <input formControlName="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 bg-gray-700 border-gray-600 leading-tight focus:outline-none focus:shadow-outline" placeholder="Username" required />
+          <div *ngIf="signUpForm.get('username')?.errors?.['invalidUsername']" class="text-red-500 text-xs italic">Invalid username.</div>
+        </div>
+        <!-- Email field -->
+        <div class="mb-4">
+          <label class="block text-white text-sm font-bold mb-2" for="email">
+            Email
+          </label>
+          <input formControlName="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 bg-gray-700 border-gray-600 leading-tight focus:outline-none focus:shadow-outline" placeholder="Email" required />
+        </div>
+        <!-- Password field -->
+        <div class="mb-4">
+          <label class="block text-white text-sm font-bold mb-2" for="password">
+            Password
+          </label>
+          <input formControlName="password" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 bg-gray-700 border-gray-600 mb-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="********" required />
+        </div>
+        <!-- Repeat Password field -->
+        <div class="mb-6">
+          <label class="block text-white text-sm font-bold mb-2" for="repeatPassword">
+            Repeat Password
+          </label>
+          <input formControlName="repeatPassword" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 bg-gray-700 border-gray-600 leading-tight focus:outline-none focus:shadow-outline" placeholder="Repeat your password" required />
+        </div>
+        <!-- reCAPTCHA container -->
+        <div id="recaptcha-container" class="g-recaptcha pb-3" data-theme="dark" data-sitekey="6LdKEZopAAAAAJ2B0tapjWLq4aYp5q_ZOdIBcHpc"></div>
+        <!-- Sign up button -->
+        <div class="flex justify-center w-full">
+          <button class="text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline w-full buttonSignUp" type="submit" [disabled]="isLoading">
+            {{isLoading ? 'Signing Up...' : 'Create New Account'}}
+          </button>
+        </div>
+        <div *ngIf="alertMsg" class="{{alertColor}} text-center py-2">{{alertMsg}}</div>
+      </form>
+    </div>
+  </div>
+  

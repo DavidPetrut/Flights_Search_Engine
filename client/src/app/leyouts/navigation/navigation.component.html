@@ -1,0 +1,87 @@
+  <nav class="navbar navbar-expand-lg bg-shadow">
+    <a class="logo navbar-brand text-uppercase fw-bold text-white" href="#"><i class="logo-icon fa-solid fa-plane-departure text-warning ms-5 pe-lg-1"></i> T-EASE</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fa-solid fa-bars navbar-toggler-icon"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto ms-3">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/">Flights</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/hotels">Hotels</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/rental">Car rental</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/shuttle">Shuttles and transfers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/holiday">Holiday Rentals</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- left nav finished -->
+
+
+
+
+   <!-- Right Nav Section -->
+   <div class="right-nav me-3">
+    <ul class="navbar-nav ml-auto">
+        <!-- Manage Bookings and FAQ links -->
+        <li class="nav-item manage-bookings px-2">
+            <a class="nav-link" routerLink="/manageBookings"><i class="fa-solid fa-briefcase pe-lg-2 text-warning"></i>Manage Bookings</a>
+        </li>
+        <li class="nav-item px-2">
+            <a class="nav-link" routerLink="/faq">Need help? | F.A.Q.</a>
+        </li>
+
+    </ul>
+    <!-- Authentication Dependent Links -->
+</div>
+    <!-- Right Nav dropdown -->
+    <div class="right-nav me-3 pt-3">
+        <!-- Authentication Dependent Links -->
+        <span *ngIf="isAuthenticated$ | async; else guestLinks" class="pe-5">
+            <a class="nav-link cursor-pointer" (click)="toggleDropdown($event)">
+                <img *ngIf="userProfile$ | async as profile; else defaultIcon" [src]="'http://localhost:8001' + profile?.profileImage" class="profile-icon rounded-full w-10 h-10 object-cover">
+            </a>
+        </span>
+    </div>
+
+
+    <div *ngIf="showDropdown" class="custom-profile-dropdown" [class.hidden]="!showDropdown">
+        <div class="custom-dropdown-content" [class.translate-x-0]="showDropdown">
+            <div class="custom-dropdown-header">
+                <button class="close-custom-dropdown" (click)="showDropdown = false">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="custom-dropdown-links">
+                <a class="block px-4 py-2 text-sm" routerLink="/">Dashboard</a>
+                <a class="block px-4 py-2 text-sm" routerLink="/profile">My Profile</a>
+                <a class="block px-4 py-2 text-sm" routerLink="/">Rewards & Discounts</a>
+                <a class="block px-4 py-2 text-sm" routerLink="/">History Purchases</a>
+                <a class="block px-4 py-2 text-sm" routerLink="/">Active Rentals</a>
+                <a class="block px-4 py-2 text-sm" routerLink="/">Go to F.A.Q</a>
+                <a class="block px-4 py-2 text-sm" routerLink="/">Switch Account</a>
+                <a class="block px-4 py-2 text-sm" routerLink="/" (click)="logout($event)">Log Out</a>
+            </div>
+        </div>
+    </div>
+    
+
+         <!-- Guest Links Template for non-authenticated users -->
+         <ng-template #guestLinks>
+            <span class="nav-item pe-5">
+                <a routerLink="/login" class="nav-link">Login | SignUp</a>
+            </span>
+        </ng-template>
+    
+        <ng-template #defaultIcon>
+            <i class="fa-solid fa-user profile-iconSpecial"></i>
+        </ng-template>
+</nav>

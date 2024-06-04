@@ -1,0 +1,12 @@
+.carousel-inner {
+    height: 35rem !important;
+    max-height: 100%; /* Make sure the carousel content takes up the full height */
+}
+
+
+@media (max-width: 800px) {
+    #carouselExampleAutoplaying{
+        max-height: none;
+        height: 399px;
+    }
+}

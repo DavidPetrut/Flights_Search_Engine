@@ -1,0 +1,10 @@
+.carousel-inner {
+    height: 45rem !important;
+    max-height: 100%; 
+}
+
+.search-engine {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}

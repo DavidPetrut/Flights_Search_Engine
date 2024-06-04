@@ -1,0 +1,320 @@
+
+<div class="container">
+    <div *ngIf="singleTickets.length > 0">
+        <div *ngFor="let ticket of singleTickets" class="main row mb-4">
+            <div class="first-half-ticket col-lg-8 singleFirstHalfTicket"> 
+                <div class="d-flex justify-content-between mb-3">
+                    <div>
+                        <small class="status">DEPARTURE - </small><small> {{ ticket.companyName }} </small>
+                    </div>
+                    <small><i class="fa-solid fa-bag-shopping pe-2"></i> 1 small bag</small>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-lg-3">
+                        <div class="company d-flex justify-content-start">
+                            <h5 class="company-icon"><img [src]="ticket.logoURL" class="logo-ticket" style="object-fit: contain;" alt=""></h5>
+                            <h5 class="time">{{ ticket.departureTime | date: 'HH:mm' }}</h5>
+                        </div>
+                    </div>
+                    <div class="container-flight col-lg-3 d-flex justify-content-center">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                        <span class="flight">{{ calculateFlightDuration(ticket.departureTime, ticket.arrivalTime) }}<i class="fa-solid fa-plane"></i>direct</span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </div>
+                    <div class="col-lg-3 d-flex justify-content-center">
+                        <h5 class="time"> {{ ticket.arrivalTime | date: 'HH:mm' }} </h5> 
+                    </div>
+    
+                    <div class="col-lg-3 d-flex justify-content-end">
+                        <i class="fa-regular fa-circle-question mt-1"></i>  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 d-flex justify-content-center">
+                        <span class="destination"> {{ ticket.departureAirport }} </span> 
+                    </div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-4 d-flex justify-content-center">
+                        <span class="destination"> {{ ticket.arrivalAirport }} </span>   
+                    </div> 
+                    <div class="col-lg-2"></div>
+                </div>
+    
+                <hr class="hr-end">
+                <div class="row">
+                    <div class="lg-12">
+                        <small>Flight fare: <span class="price">£{{ floorValue(ticket.oldTicketPrice) }}</span></small> 
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+            <div class="col-lg-4 second-half-ticket">
+                <div class="row">
+                    <h6 class="fw-bold">Registered User price</h6>
+                    <small class="fst-italic">30-day free trial</small>
+                </div>
+                <br>
+                
+                <div class="row info-icon-container">
+                    <div>
+                        <i class="leaf fa-solid fa-leaf me-2"></i>
+                        <small class="eco">{{ ticket.co2Level }}% less CO2</small> 
+                        <i class="info fa-regular fa-circle-question mt-1 ps-2"></i> <!-- this had this functionality (mouseenter)="onMouseEnter(i)" (mouseleave)="onMouseLeave(i)" -->
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="d-flex justify-content-start">
+                        <span class="initial-price me-2 ms-2">£{{ floorValue(ticket.oldTicketPrice) }}</span>
+                        <span class="new-price">£{{ floorValue(ticket.newTicketPrice) }}</span>
+                    </div>
+                    <small class="ms-2 fst-italic">Registered Passenger fare</small>
+                </div>
+                <div class="row">
+                    <div class="d-flex justify-content-center">
+                        <button class="search-button btn text-white mt-2" (click)="selectTicket(ticket)">Select</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- No flights template -->
+        <ng-template #noFlightsTemplate>
+          <div class="no-flights">
+            <p>No flights available for the selected criteria.</p>
+          </div>
+        </ng-template>
+    </div>
+</div>
+
+
+
+
+
+
+<!------------------------------------------------------------------ COMBINED TICKETS  ---------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="main row mb-4" *ngIf="!isSingleFlight">
+
+        <div class="main row mb-4" *ngFor="let combinedTicket of combinedTickets; let i = index">
+            <div class="first-half-ticket col-lg-8">
+                
+                <!-- Departure Flight ticket start -->
+                        <!-- Sample binding in TicketComponent template -->
+                <span>{{ combinedTicket.departureFlight.departureAirport }}</span>
+                <!-- <span>{{ combinedTicket.departureFlight.arrivalAirport }}</span> -->
+                
+            <div>
+                <div class="d-flex justify-content-between mb-3">
+                    <div>
+                        <small class="status">DEPARTURE - </small><small> {{ combinedTicket.departureFlight.companyName }} </small>
+                    </div>
+                    <small><i class="fa-solid fa-bag-shopping pe-2"></i> 1 small bag</small>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-lg-3">
+                        <div class="company d-flex justify-content-start">
+                            <h5 class="company-icon"><img src="{{ combinedTicket.departureFlight.logoURL }}" class="logo-ticket" style="object-fit: contain;" alt=""></h5>
+                            <h5 class="time"> {{ combinedTicket.departureFlight.departureTime | date: 'HH:mm' }} </h5>
+                        </div>
+                    </div>
+                    <div class="container-flight col-lg-3 d-flex justify-content-center">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                        <span class="flight"> {{ calculateFlightDuration(combinedTicket.departureFlight.departureTime, combinedTicket.departureFlight.arrivalTime) }} <i class="fa-solid fa-plane"></i> direct</span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </div>
+                    <div class="col-lg-3 d-flex justify-content-center">
+                        <h5 class="time"> {{ combinedTicket.departureFlight.arrivalTime | date: 'HH:mm' }} </h5>
+                    </div>
+    
+                    <div class="col-lg-3 d-flex justify-content-end">
+                        <i class="fa-regular fa-circle-question mt-1" (click)="toggleDepartureDetails(i)"></i>
+                        <div *ngIf="combinedTicket.showDepartureDetails" class="overlay2">
+                            <div class="popup itinerary">
+                                <div>
+                                    <h5 class="company-icon"><img src="{{ combinedTicket.departureFlight.logoURL }}" class="logo-ticket-itinerary" style="object-fit: contain;" alt=""> <span class="me-5"> {{combinedTicket.departureFlight.companyName}}</span> <i class="fa-solid fa-xmark button-x" (click)="toggleDepartureDetails(i)"></i></h5>
+                                    <h3 class="fw-bold">Your flight Details:</h3>
+                                </div>
+                                <hr class="hr-end">
+                                <div>
+                                    <div>
+                                        <h4><span class="fw-bold">Itinerary:</span> flight - <i class="fa-regular fa-calendar-check me-1"></i> <span>{{combinedTicket.departureFlight.flightDay}}</span></h4>
+                                    </div>
+                                    <div>
+                                        <h4 class="fw-bold">Departure:</h4>
+                                        <p>Departure airport: {{combinedTicket.departureFlight.fullNameDeparture}}</p>
+                                        <p><i class="fa-regular fa-clock me-1"></i> {{ combinedTicket.departureFlight.departureTime | date: 'HH:mm a' }}</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="fw-bold">Arrival:</h4>
+                                        <p>Arrival airport hello: {{combinedTicket.departureFlight.fullNameArrival}}</p>
+                                        <p><i class="fa-regular fa-clock me-1"></i> {{combinedTicket.departureFlight.arrivalTime | date: 'HH:mm a'}}</p>
+                                    </div>
+                                    <hr class="hr-end">
+                                    <p><span class="fw-bold">Flight: </span><i class="fa-solid fa-clock me-1 ms-1"></i>{{combinedTicket.departureFlight.flightTime}} <i class="fa-solid fa-ticket ms-2 me-1"></i> {{ combinedTicket.departureFlight.flightClass }} </p>
+                                    <p class="mb-1">
+                                        <span class="priceNamePopupInfo">Price:</span> 
+                                        <span class="me-1"><i class="fa-solid fa-user ms-2 me-1"></i><span class="numberPassangersPopup">{{ numberOfAdults}} x £{{floorValue(combinedTicket.departureFlight.oldTicketPrice)}}</span></span> |
+                                        <span class="ms-1"><i class="fa-solid fa-child me-1"></i><span class="numberPassangersPopup">{{ numberOfKids}} x £{{floorValue(combinedTicket.departureFlight.oldTicketPrice * 0.5)}} </span></span>
+                                    </p>
+                                    <h5> <i class="fa-solid fa-suitcase-rolling me-1"></i>1 small bag per passenger </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-lg-4 d-flex justify-content-center">
+                        <span class="destination"> {{ combinedTicket.departureFlight.departureAirport }} </span>
+                    </div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-4 d-flex justify-content-center">
+                        <span class="destination">{{ combinedTicket.departureFlight.arrivalAirport }}</span>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+    
+                <!-- Flight ticket end -->
+            </div>
+
+            <hr>
+
+
+            <!-- Return Flight ticket start -->
+
+              <span>{{ combinedTicket.departureFlight.arrivalAirport }}</span>
+            <div>
+                <div *ngIf="combinedTicket.returnFlight">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div>
+                            <small class="status">RETURN - </small><small> {{ combinedTicket.returnFlight.companyName }} </small>
+                        </div>
+                        <small><i class="fa-solid fa-bag-shopping pe-2"></i> 1 small bag</small>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-lg-3">
+                            <div class="company d-flex justify-content-start">
+        
+                                <h5 class="company-icon"> <img src="{{ combinedTicket.returnFlight.logoURL }}" class="logo-ticket" style="object-fit: contain;" alt=""></h5>
+                                <h5 class="time"> {{ combinedTicket.returnFlight.departureTime | date: 'HH:mm' }} </h5>
+                            </div>
+                        </div>
+                        <div class="container-flight col-lg-3 d-flex justify-content-center">
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                            <span class="flight"> {{ calculateFlightDuration(combinedTicket.returnFlight.departureTime, combinedTicket.returnFlight.arrivalTime) }} <i class="fa-solid fa-plane"></i> direct</span>
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                        <div class="col-lg-3 d-flex justify-content-center">
+                            <h5 class="time"> {{ combinedTicket.returnFlight.arrivalTime | date: 'HH:mm' }} </h5>
+                        </div>
+                        <div class="col-lg-3 d-flex justify-content-end">
+                            <i class="fa-regular fa-circle-question mt-1" (click)="toggleReturnDetails(i)"></i>
+                            <div *ngIf="combinedTicket.showReturnDetails" class="overlay2">
+                                <div class="popup itinerary">
+                                    <div>
+                                        <h5 class="company-icon"><img src="{{ combinedTicket.returnFlight.logoURL }}" class="logo-ticket-itinerary" style="object-fit: contain;" alt=""> <span class="me-5"> {{combinedTicket.returnFlight.companyName}}</span> <i class="fa-solid fa-xmark button-x" (click)="toggleReturnDetails(i)"></i></h5>
+                                        <h3 class="fw-bold">Your flight Details:</h3>
+                                    </div>
+                                    <hr class="hr-end">
+                                    <div>
+                                        <div>
+                                            <h4><span class="fw-bold">Itinerary:</span> flight - <i class="fa-regular fa-calendar-check me-1"></i> <span>{{combinedTicket.returnFlight.flightDay}}</span></h4>
+                                        </div>
+                                        <div>
+                                            <h4 class="fw-bold">Departure:</h4>
+                                            <p>Airport: {{combinedTicket.returnFlight.fullNameDeparture}}</p>
+                                            <p><i class="fa-regular fa-clock me-1"></i> {{ combinedTicket.returnFlight.departureTime | date: 'HH:mm a' }}</p>
+                                        </div>
+                                        <div>
+                                            <h4 class="fw-bold">Arrival:</h4>
+                                            <p>Airport: {{combinedTicket.returnFlight.fullNameArrival}}</p>
+                                            <p><i class="fa-regular fa-clock me-1"></i> {{combinedTicket.returnFlight.arrivalTime | date: 'HH:mm a'}}</p>
+                                        </div>
+                                        <hr class="hr-end">
+                                        <p><span class="fw-bold">Flight: </span><i class="fa-solid fa-clock me-1 ms-1"></i>{{combinedTicket.returnFlight.flightTime}} <i class="fa-solid fa-ticket ms-2 me-1"></i> {{ combinedTicket.returnFlight.flightClass }} </p>
+                                        <p class="mb-1">
+                                            <span class="priceNamePopupInfo">Price:</span> 
+                                            <span class="me-1"><i class="fa-solid fa-user ms-2 me-1"></i><span class="numberPassangersPopup">{{ numberOfAdults}} x £{{floorValue(combinedTicket.returnFlight.oldTicketPrice)}}</span></span> |
+                                            <span class="ms-1"><i class="fa-solid fa-child me-1"></i><span class="numberPassangersPopup">{{ numberOfKids}} x £{{floorValue(combinedTicket.returnFlight.oldTicketPrice * 0.5)}} </span></span>
+                                        </p>
+                                        <h5> <i class="fa-solid fa-suitcase-rolling me-1"></i>1 small bag per passenger </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="col-lg-4 d-flex justify-content-center">
+                            <span class="destination">{{ combinedTicket.returnFlight.departureAirport }}</span>
+                        </div>
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-4 d-flex justify-content-center">
+                            <span class="destination">{{ combinedTicket.returnFlight.arrivalAirport }}</span>
+                        </div>
+                        <div class="col-lg-2"></div>
+                    </div>
+                </div>
+            </div>            
+            <!-- Return Flight ticket end -->
+
+
+
+
+            <hr class="hr-end">
+            <div class="row">
+                <div class="lg-12">
+                    <small>Flight fare: <span class="price">£{{floorValue(combinedTicket.totalOldTicketPrice) }}</span></small>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-4 second-half-ticket">
+            <div class="row">
+                <h6 class="fw-bold">Registered User price</h6>
+                <small class="fst-italic">30-day free trial</small>
+            </div>
+            <br><br><br>
+            
+            <div class="row info-icon-container">
+                <div *ngIf="combinedTicket.showCo2Popup" class="co2-popup">
+                    <p>This travel plan produces {{ combinedTicket.departureFlight.co2Level }}% less CO2 compared to the typical emissions for your search criteria. This reduction is determined considering various factors including distance, the number of layovers, type of aircraft and other factors.</p>
+                </div>
+                <div>
+                    <i class="leaf fa-solid fa-leaf me-2"></i>
+                    <small class="eco">{{ combinedTicket.departureFlight.co2Level }}% less CO2</small>
+                    <i class="info fa-regular fa-circle-question mt-1 ps-2" (mouseenter)="onMouseEnter(i)" (mouseleave)="onMouseLeave(i)"></i>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="row">
+                <div class="d-flex justify-content-start">
+                    <span class="initial-price me-2 ms-2">£{{ floorValue(combinedTicket.totalOldTicketPrice) }}</span>
+                    <span class="new-price">£{{ floorValue(combinedTicket.totalNewTicketPrice) }}</span>
+                </div>
+                <small class="ms-2 fst-italic">Registered Passenger fare</small>
+            </div>
+            <div class="row">
+                <div class="d-flex justify-content-center">
+                    <button class="search-button btn text-white mt-3" (click)="selectTicket(combinedTicket, true)">Select</button>
+                    <!-- <button class="search-button btn text-white mt-3" routerLink="/checkout">Select</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

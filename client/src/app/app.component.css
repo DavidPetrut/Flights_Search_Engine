@@ -1,0 +1,8 @@
+* {
+    background-color: #F2F2F2 !important;
+}
+
+.app-body{
+    /* margin-top: 150px; */
+    min-height: 39vh;
+}

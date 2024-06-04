@@ -1,0 +1,79 @@
+<!-- profile-description.component.html -->
+<div class="specialPadding3">
+  <div id='updateProfile' class='mb-3 profileDescriptionContainer'>
+    <div class="flex justify-center items-center h-screen signUpContainer">
+      <div class="w-full max-w-3xl p-8 bg-gray-800 bg-opacity-90 rounded-lg shadow-lg formContainer overflow-y-auto max-h-[150vh]" style="padding-right: 1rem; padding-left: 1rem;">
+        <h3 class="text-white text-3xl text-center my-5">Update Your Profile</h3>
+        <form [formGroup]="profileForm" class="space-y-6 mb-2 mr-3 ms-3" (ngSubmit)="submitProfile()">
+          
+          <div class="w-full px-2 my-3">
+            <label class="block">
+              <span class="text-sm text-white font-bold">Bio:</span>
+              <input formControlName="bio" type="text" class="mt-1 block w-full bg-gray-700 text-gray-300 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500" placeholder="Your current bio">
+            </label>
+          </div>
+          
+          <div class="w-full px-2 my-3">
+            <label class="block">
+              <span class="text-sm text-white font-bold">Status:</span>
+              <input formControlName="status" type="text" class="mt-1 block w-full bg-gray-700 text-gray-300 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500" placeholder="Your current status">
+            </label>
+          </div>
+          
+          <div class="w-full px-2 my-3">
+            <label class="block">
+              <span class="text-sm text-white font-bold">Favorite Things:</span>
+              <input formControlName="favorites" type="text" class="mt-1 block w-full bg-gray-700 text-gray-300 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500" placeholder="Things you love">
+            </label>
+          </div>
+          
+          <div class="w-full px-2 my-3">
+            <label class="block">
+              <span class="text-sm text-white font-bold">Vision:</span>
+              <input formControlName="vision" type="text" class="mt-1 block w-full bg-gray-700 text-gray-300 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500" placeholder="Your vision or goal">
+            </label>
+          </div>
+          
+          <div class="w-full px-2 my-3 pb-4">
+            <label class="block">
+              <span class="text-sm text-white font-bold">Contact:</span>
+              <input formControlName="contact" type="text" class="mt-1 block w-full bg-gray-700 text-gray-300 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500" placeholder="How to reach you">
+            </label>
+          </div>
+  
+          <!-- FAQ Section -->
+          <div formArrayName="faq">
+            <h3 class="text-white text-3xl text-center my-5">FAQs</h3>
+            <div *ngFor="let faq of faq.controls; let i = index" [formGroupName]="i">
+              <div class="flex flex-col mb-4">
+                <label>
+                  <span class="text-sm text-white font-bold">Question:</span>
+                  <div class="row justify-content-between questionInputRow">
+                    <div class="row gap-5" >
+                      <select formControlName="question" class="mt-1 block w-full bg-gray-700 text-gray-300 border border-gray-600 rounded py-2 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500 col-lg-9">
+                        <option *ngFor="let question of predefinedQuestions" [value]="question">{{ question }}</option>
+                      </select>
+                      <button type="button" (click)="removeFaq(i)" class="mt-2 py-2 bg-red-500 text-white rounded profileBTN profileBTNRemove col-lg-2">Remove</button>
+                    </div>
+                  </div>
+                </label>
+                <label>
+                  <span class="text-sm text-white font-bold">Answer:</span>
+                  <textarea formControlName="answer" rows="3" class="mt-1 block w-full bg-gray-700 text-gray-300 border border-gray-600 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500" placeholder="Your answer"></textarea>
+                </label>
+                <hr class="horizontalLine">
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-10 pt-6">
+            <button type="button" (click)="addFaq()" class="py-2 px-4 bg-blue-500 text-white rounded profileBTN bottomBTNAdd">Add FAQ</button>
+            <button class="py-2 px-4 bg-green-500 text-white rounded float-end profileBTN bottomBTNSave" type="submit">Save Profile</button>
+            <button class="py-2 px-4 me-2 bg-green-500 text-white rounded float-end profileBTN bottomBTNAdd" routerLink="/profile"> Back to Profile
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

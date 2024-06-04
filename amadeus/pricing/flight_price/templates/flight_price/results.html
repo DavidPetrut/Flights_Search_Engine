@@ -1,0 +1,117 @@
+{% load static %}
+
+{{ metrics|json_script:"metrics" }}
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{% static 'pricing/style/nouislider.min.css' %}" rel="stylesheet">
+    <script src="{% static 'pricing/js/nouislider.min.js' %}"></script>
+    <script src="{% static 'pricing/js/wNumb.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'pricing/style/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Amadeus Demo API</title>
+</head>
+<body>
+
+<h3 class="login-heading mb-4 mt-4 pl-3">{{ origin }} &#x2708 {{ destination }} <br>{{ departure_date }}
+{% if return_date %} <span class="text-info">&#10594&#10596</span> {{ return_date }}{% endif %}</h3>
+{% if trip_purpose %} <h4 class="login-heading mb-4 mt-4 pl-3">Flying for <span style="font-size: 26;color: darkred;">{{ trip_purpose }} </span> purposes</h4> {% endif %}
+
+<div class="modal-body row">
+    <div class="col-md-5 offset-1">
+        <h4 class="login-heading mb-4 text-left">FLIGHT OFFERS</h4>
+        {% for r in flight_offers %}
+            {% if r.0firstFlightDepartureDate %}
+                <div class="card mb-6 text-center" style="max-width: 40rem;">
+                    <div class="nounderline card-header text-center" style="font-size: 26;color: darkred;">${{ r.price }}
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <h4 class="font-weight-light text-info pb-3">Departure <span class="smallstyle">Total duration {{ r.0FlightTotalDuration }}</span></h4>
+                                <h4><img src={{ r.0firstFlightAirlineLogo }} alt={{ r.0firstFlightAirline }}> {{ r.0firstFlightDepartureDate }} {{ r.0firstFlightDepartureAirport }}
+                                    <a href="#" data-toggle="tooltip" class="nounderline text-info" title={{ r.0firstFlightArrivalDuration }} duration>&#10230</a> {{ r.0firstFlightArrivalAirport }} {{ r.0firstFlightArrivalDate }}</h4>
+                                {% if r.0secondFlightDepartureAirport %}
+                                    <p class="nounderline elegantstyle">Connection duration is {{ r.0stop_time }}</p>
+                                    <h4><img src={{ r.0secondFlightAirlineLogo }} alt={{ r.0secondFlightAirline }}> {{ r.0secondFlightDepartureDate }} {{ r.0secondFlightDepartureAirport }}
+                                        <a href="#" data-toggle="tooltip" class="nounderline text-info" title={{ r.0secondFlightArrivalDuration }} duration>&#10230</a> {{ r.0secondFlightArrivalAirport }} {{ r.0secondFlightArrivalDate }}</h4>
+                                {% endif %}
+                                {% if r.1firstFlightDepartureAirport %}
+                            <hr class="newstyle">
+                            <h4 class="font-weight-light text-info pb-3">Return <span class="" style="color: black; font-size: 15px;">Total duration {{ r.1FlightTotalDuration }}</span></h4>
+                                    <h4><img src={{ r.1firstFlightAirlineLogo }} alt={{ r.1firstFlightAirline }}> {{ r.1firstFlightDepartureDate }} {{ r.1firstFlightDepartureAirport }}
+                                        <a href="#" data-toggle="tooltip" class="nounderline text-info" title={{ r.1firstFlightArrivalDuration }} duration>&#10230</a> {{ r.1firstFlightArrivalAirport }} {{ r.1firstFlightArrivalDate }}</h4>
+                                    {% if r.1secondFlightDepartureAirport %}
+                                        <p class="nounderline elegantstyle">Connection duration is {{ r.1stop_time }}</p>
+                                        <h4><img src={{ r.1secondFlightAirlineLogo }} alt={{ r.1secondFlightAirline }}> {{ r.1secondFlightDepartureDate }} {{ r.1secondFlightDepartureAirport }}
+                                            <a href="#" data-toggle="tooltip" class="nounderline text-info" title={{ r.1secondFlightArrivalDuration }} duration>&#10230</a> {{ r.1secondFlightArrivalAirport }} {{ r.1secondFlightArrivalDate }}</h4>
+                                    {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+        <div class="col-md-5">
+            <h4 class="login-heading mb-4 text-left">PRICE ANALYSIS</h4>
+            {% if metrics %}
+                 <p>The cheapest available flight is <span class="text-info">{{ is_good_deal }}</span></p>
+                 <p>The least expensive flights usually cost between ${{ metrics.first }} - {{ metrics.third }} </p>
+                <div class="pb-5"></div>
+                <div id="range-bar"></div>
+            {% else %}
+                <p>We don't have price metrics for this itinerary.</p>
+                <p>Please try other trips such us:</p>
+                <ul>
+                      <li>MAD &#x2708 &nbsp; CDG 2021-03-21</li>
+                      <li>ATH &#x2708 &nbsp; MAD 2021-02-18 ⥢⥤ 2021-02-22</li>
+                      <li>BKK &#x2708 &nbsp; SYD 2021-03-27</li>
+                </ul>
+            {% endif %}
+        </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+</script>
+<script>
+    var metrics = JSON.parse(document.getElementById('metrics').textContent);
+    var slider = document.getElementById('range-bar');
+    noUiSlider.create(slider, {
+        start: [metrics.first, metrics.third],
+        tooltips: [true, true],
+        connect: [true, true, true],
+        format: wNumb({ decimals: 2,
+                        prefix: '$' }),
+        pips: {
+            mode: 'values',
+            values: [{{ cheapest_flight }}],
+            density: 6,
+            format: wNumb({ decimals: 2,
+                            prefix: '$' }),
+        },
+        range: {
+            'min': {{ metrics.min }},
+            'max': {{ metrics.max }}
+        }
+    });
+    var connect = slider.querySelectorAll('.noUi-connect');
+    var classes = ['bar-1-color', 'bar-2-color', 'bar-3-color'];
+    for (var i = 0; i < connect.length; i++) {
+        connect[i].classList.add(classes[i]);
+    }
+</script>
+</body>
+</html>

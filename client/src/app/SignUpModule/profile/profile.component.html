@@ -1,0 +1,78 @@
+<div class="min-h-screen bg-gray-200 dark:bg-gray-800" id="profile-section">
+  <app-navigation></app-navigation>
+    <div class="shadow-lg specialBackGround">
+      <div class="h-80 overflow-hidden relative">
+        <img class="w-full h-full object-cover object-center imgProfileBackground" src="https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+      </div>
+      <div class="flex justify-center px-5 -mt-12 relative">
+        <input type="file" id="profileImageInput" style="display: none" (change)="handleFileChange($event)">
+        <label for="profileImageInput">
+          <ng-container *ngIf="profileData?.profileImage; else defaultProfile">
+            <!-- Assuming ProfileImage is a component or you handle it differently in Angular -->
+            <img [src]="'http://localhost:8001' + profileData.profileImage" alt="Profile" class="bg-white p-2 rounded-full cursor-pointer mainProfileImage">
+          </ng-container>
+          <ng-template #defaultProfile>
+            <i class="fa-solid fa-circle-user h-full w-full bg-white p-2 rounded-full defaultProfileImage cursor-pointer"></i>
+          </ng-template>
+        </label>
+      </div>
+      <div>
+        <div class="text-center px-14">
+          <h2 class="text-gray-800 text-3xl font-bold">{{ profileData?.username || 'User' }}</h2>
+          <p class="mt-2 text-gray-500 text-sm">{{ profileData?.bio || 'Your bio goes here...' }}</p>
+        </div>
+        <div class="mt-8">
+          <div class="text-center px-6 py-2">
+            <h3 class="text-gray-800 text-2xl font-bold mb-2">Welcome to My Profile!</h3>
+            <p class="text-gray-600">About Me</p>
+          </div>
+          <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
+            <div class="p-4">
+              <div class="flex items-center">
+                <h4 class="text-gray-800 font-bold">Status:</h4>
+                <p class="ml-2">{{ profileData?.status }}</p>
+              </div>
+              <div class="flex items-center mt-2">
+                <h4 class="text-gray-800 font-bold">Favorite Things:</h4>
+                <p class="ml-2">{{ profileData?.favorites }}</p>
+              </div>
+              <div class="flex items-center mt-2">
+                <h4 class="text-gray-800 font-bold">Vision:</h4>
+                <p class="ml-2">{{ profileData?.vision }}</p>
+              </div>
+              <div class="flex items-center mt-2">
+                <h4 class="text-gray-800 font-bold">Contact:</h4>
+                <p class="ml-2">{{ profileData?.contact }}</p>
+              </div>
+            </div>
+            <div class="p-4 border-t border-gray-200">
+              <h4 class="text-gray-800 font-bold mb-2">Q&A:</h4>
+              <div *ngFor="let qa of profileData?.faq; let i = index">
+                <h5 class="text-gray-800 font-semibold">{{ qa.question }}</h5>
+                <p>{{ qa.answer }}</p>
+              </div>
+              <button class="my-4 py-2 px-5 rounded focus:outline-none focus:shadow-outline buttonProfileUpdate float-left" routerLink="/profile-description">UPDATE</button>
+              <button class="my-4 py-2 px-5 rounded focus:outline-none focus:shadow-outline buttonProfileUpdate float-right" (click)="navigateToPredictionFlights()" >FLIGHTS PREDICTION</button>
+
+
+              <br><br><br>
+              <!-- Add this in your profile component template -->
+              <app-student-id-check></app-student-id-check>
+
+            </div>
+          </div>
+        </div>
+        <hr class="mt-6">
+        <div class="flex bg-gray-50">
+          <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
+            <p><span class="font-semibold">2.5k </span> Followers</p>
+          </div>
+          <div class="border"></div>
+          <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
+            <p><span class="font-semibold">2.0k </span> Following</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

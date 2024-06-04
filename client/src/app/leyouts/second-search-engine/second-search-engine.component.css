@@ -1,0 +1,240 @@
+
+
+.main {
+    width: 100%;
+    color: white;
+    background-color: #333333;
+}
+
+
+/* search functionality */
+
+
+.passenger-popup {
+    display: flex;
+    z-index: 100;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: auto 0rem;
+    margin-top: 2.7rem;
+    margin-right: 0px !important;
+    margin-left: -2px;
+    padding-right: 0px;
+    color: black;
+    font-weight: 900;
+}
+
+.passenger-popup-buttons {
+  background-color: white;
+  color: #949698;
+  border: none;
+  font-weight: 900;
+  font-size: 15px;
+}
+
+.btn-change {
+    border: none;
+    width: 100%;
+    background-color: #FF6600;
+    color: white;
+    font-weight: 670;
+    border-radius: 25px 25px 25px 25px;
+    padding: 3.2px 10px 3.2px 10px;
+}
+
+.adults-span {
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+}
+
+
+
+
+
+/* these are the classes imported from search-engine component */
+
+
+.all-inputs {
+    justify-content: center !important;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+
+.form-select-1 {
+    width:fit-content;
+    background-color: transparent;
+    box-shadow: none;
+    color: #FF8F44;
+    border-radius: 0%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: transparent;
+    border-bottom: transparent;
+    font-size: 16px;
+}
+
+.form-select-1 option:checked {
+    color: white;
+    background-color: #FF8F44;
+}
+
+.input-country {
+    width: 100%;
+    font-size: 16px;
+    padding-right: auto;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border-radius: 0%;
+    font-style: italic;
+    padding-right: 4rem;
+    margin-left: 0px;
+    border: 1px solid #b4b3b3;
+}
+
+.input-country-2 {
+    width: 100%;
+    margin-left: -2px !important;
+    padding-left: 18px;
+}
+
+.input-switch-container {
+    position: relative;
+    display: inline-block; /* Adjust as needed */
+}
+
+.switch {
+    position: absolute;
+    top: 310; /* Temporarily for debugging */
+    background-color: white;
+    border: 1px solid #FF6600;
+    border-radius: 50%;
+    margin-left: -15px;
+    margin-top: 10px;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1000; /* High z-index for visibility */
+}
+
+.switch img {
+    width: 13px;
+    margin-left: 6px;
+    margin-bottom: 4px;
+    
+}
+
+.logoSwitch {
+    padding-top: 4px;
+}
+
+.button {
+    width: fit-content;
+    font-size: 16px;
+    padding-right: 50px;
+    padding-top: 7px;
+    padding-bottom: 11px;
+    border-radius: 0%;
+    padding-left: 12px;
+    border: 1px solid #b4b3b3;
+    margin-top: 0px;
+    background-color: white;
+    margin-left: -2px !important;
+    padding-left: 18px;
+    text-wrap: nowrap;
+}
+
+.btn-travellers:hover {
+    color: #949698;
+}
+
+.icon {
+    background-color: white;
+    color: #FF8F44;
+    padding-left: 6px;
+}
+
+
+.search-button {
+    background-color: #FF6600;
+    color: white;
+    font-weight: 670;
+    border-radius: 0px 25px 25px 0px;
+    width: max-content;
+}
+
+
+.top-buttons {
+    background-color: #F5F5F5;
+    color: #666666 !important;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid #c6c5c5;
+}
+
+.active-search-button {
+    border-bottom: white;
+    background-color: white;
+    color: #FF7113 !important;
+}
+
+
+.passenger-popup {
+    display: flex;
+    z-index: 100;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: auto 0rem;
+    margin-top: 2.7rem;
+    margin-right: 0px !important;
+    margin-left: -2px;
+    padding-right: 0px;
+}
+
+.passenger-popup-buttons {
+  background-color: white;
+  color: #949698;
+  border: none;
+  font-weight: 900;
+  font-size: 15px;
+}
+
+
+.adults-span {
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+}
+
+.secondLocation {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+}
+
+.secondTravelersButton {
+    z-index: 2;
+    background-color: #E7E7E7;
+    color: #a9a9a9;
+}
+
+
+
+
+/* media query for search bar */
+
+
+@media screen and (max-width: 768px) {
+    .input-country {
+        width: 100%;
+        font-size: 16px;
+        padding-right: auto;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        border-radius: 0%;
+        font-style: italic;
+        padding-right: 0px !important;
+        margin-left: 0px; /* we need this for mobile to not have scrolling bar when mobile size screens */
+        border: 1px solid #b4b3b3;
+    }
+}

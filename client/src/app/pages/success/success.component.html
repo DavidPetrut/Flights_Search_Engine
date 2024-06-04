@@ -1,0 +1,29 @@
+<div class="min-h-screen bg-cover bg-center flex items-center justify-center relative" style="background-image: url('../../../assets/img/pexels-spencer-davis-4388219.jpg');">
+  <!-- Overlay to darken the background -->
+  <div class="bg-black opacity-50 absolute inset-0 z-0"></div>
+  
+  <!-- Content Container -->
+  <div class="max-w-screen-lg p-8 text-white text-center z-10 relative paymentContainer">
+      <div class="mb-8">
+          <h1 class="text-4xl font-bold mb-2">Thank You for Choosing</h1>
+          <h2 class="text-3xl font-semibold">TRAVEL-EASE Ltd</h2>
+      </div>
+      <div class="row gap-0 bg-gray-800 bg-opacity-90 p-8 mb-8 rounded-lg p-4">
+        <h5 class="text-lg pe-2 mb-5" style="text-wrap: nowrap;">Your payment was successful! Sit back and relax, your journey awaits. You will receive a confirmation email shortly.</h5>
+        <div class="col-lg-6">
+          <div class="text-left mt-4">
+              <h3 class="text-lg font-semibold mb-2" style="text-decoration: underline;">Payment Details</h3>
+              <ul>
+                  <li>Amount: {{ (paymentDetails?.amount / 100) | number:'1.2-2' }}</li>
+                  <li>Currency: {{ paymentDetails?.currency | uppercase }}</li>
+                  <p class="text-lg pt-5" style="font-style: italic;">{{ paymentDetails?.description }}</p>
+                </ul>
+          </div>
+        </div>
+        <div class="col-lg-6">
+              <img *ngIf="paymentDetails?.images && paymentDetails?.images.length > 0" [src]="paymentDetails.images[0]" alt="Product Image" class="mx-auto" style="max-width: 50%; height: auto;">
+        </div>
+      </div>
+      <a href="http://localhost:4200" class="bg-transparent hover:bg-blue-600 font-bold py-2 px-4 rounded inline-block btn">Back to Home</a>
+  </div>
+</div>

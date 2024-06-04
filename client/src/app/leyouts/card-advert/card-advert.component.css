@@ -1,0 +1,36 @@
+/* #FE6C0A */
+
+/* .row {
+    margin-top: -25px;
+    margin-bottom: -15px;
+} */
+
+* > img {
+    border-bottom: 4px solid var(--subtitle-advert);
+}
+
+.title {
+    color: var(--title-advert);
+}
+
+.title-ad {
+    color: var(--subtitle-advert);
+}
+
+.img-ad {
+    height: 220px;
+}
+
+.book-now {
+    font-size: 25px;
+    font-weight: 750;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: rgb(223, 223, 223, 0.1)
+}
+

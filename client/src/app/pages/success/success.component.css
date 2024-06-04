@@ -1,0 +1,20 @@
+.btn {
+    color: white;
+    text-decoration: none;
+    border: 2px solid white;
+}
+
+.btn:hover {
+    text-decoration: none;
+    border: 2px solid white;
+    font-weight: bold;
+}
+
+
+.specialHeading1 {
+    text-wrap: nowrap;
+}
+
+.paymentContainer {
+    width: 100%;
+}

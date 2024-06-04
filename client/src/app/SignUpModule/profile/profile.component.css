@@ -1,0 +1,15 @@
+
+
+.defaultProfileImage {
+    font-size: 10rem !important;
+}
+
+.mainProfileImage {
+    height: 200px;
+    width: 200px;
+    margin-bottom: 13px;
+}
+
+.specialBackGround {
+    background-color: #EDF2F7;
+}

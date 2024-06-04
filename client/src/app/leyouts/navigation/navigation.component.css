@@ -1,0 +1,253 @@
+nav {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+.bg-shadow {
+    background-color: rgba(3, 3, 3, 0.3) !important;
+    backdrop-filter: blur(5px)
+}
+.navbar .nav-link {
+    color: white; 
+    font-weight: bolder;
+    text-wrap: nowrap;
+    font-size: 17px !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.navbar .navbar-nav .nav-item {
+    margin-right: 6%;
+}
+
+.navbar .nav-item .nav-link:hover {
+    background-color: rgba(6, 0, 0, 0.4);
+}
+
+.navbar .right-nav .navbar-nav .nav-item {
+    margin-right: 30px;
+}
+
+.logo {
+    font-size: 20px;
+}
+.logo-icon {
+    font-size: 20px;
+    font-weight: 0 !important;
+}
+
+.manage-bookings {
+    font-weight: 999;
+}
+
+
+
+.profile-iconSpecial {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.profile-icon {
+    border: 3px solid white;
+    border-radius: 50%;
+    height: 2.5rem;
+    width: auto;
+}
+
+
+.dropdown-content {
+    font-size: smaller;
+    border: 3px solid #FF5450;
+    position: fixed;
+    top: 0; /* Position the dropdown right below the profile image */
+    right: 0;
+    z-index: 100; /* Ensure it's above other content */
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Use visibility to ensure it doesn't interact when hidden */
+    transition: opacity 2.5s ease-in-out, visibility 2.5s; /* Smooth transition for the fade-in effect */
+  }
+
+  .dropdown-content.show {
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Make it interactable */
+  }
+  
+
+
+/* media queries */
+
+
+
+@media (max-width: 1920px) {
+    .navbar #navbarNav {
+        margin-right: 1px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+
+    .navbar .right-nav .navbar-nav .nav-item {
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .navbar .nav-link {
+        margin-right: 0px !important;
+        padding-right: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .navbar .right-nav .navbar-nav .nav-item {
+        margin-right: 0px !important;
+    }
+}
+
+
+@media (max-width: 1450px) {
+    .navbar .nav-link {
+        font-size: 14px !important;
+        margin-right: 0px !important;
+        padding-right: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .navbar .nav-link {
+        font-size: 14px !important;
+        margin-right: 0px !important;
+        padding-right: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .navbar-toggler-icon {
+        font-size: 36px;
+        color: white !important;
+        background-color: rgba(6, 0, 0, 0.4);
+    }
+    .navbar .logo {
+        display: none;
+    }
+
+    .navbar #navbarNav {
+        margin-right: 100px !important;
+        margin-left: 0px !important;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+
+    .navbar .right-nav .navbar-nav .nav-item {
+        margin-right: 0px !important;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .right-nav {
+        display: none;
+    }
+}
+
+
+
+
+/* new navbar dropdown */
+
+
+/*
+.custom-profile-dropdown {
+    background-color: rgba(0, 0, 0, 0.5); 
+  }
+  
+  .custom-dropdown-content {
+    max-width: 25%; 
+    height: 100vh;
+    background-color: #1a202c; 
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  
+ 
+  .custom-dropdown-content.translate-x-full {
+    transform: translateX(100%);
+  }
+  
+
+  .custom-dropdown-content.translate-x-0 {
+    transform: translateX(0%);
+  }
+  
+  .close-custom-dropdown {
+    cursor: pointer;
+  }
+  
+  */
+  .custom-profile-dropdown {
+    /* Overlay covering the whole viewport but allowing some background visibility */
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1050; /* High z-index to ensure it's above other content */
+    width: 100%; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: flex-end; /* Aligns dropdown content to the right */
+    transition: opacity .3s ease;
+  }
+  
+  .custom-dropdown-content {
+    /* Adjust the width of the dropdown to be a significant portion of the screen, not full */
+    width: 30%; /* Slightly wider for better content visibility */
+    max-width: 400px; /* Ensures it doesn't get too wide on large screens */
+    background-color: #f8fafc; /* Lighter, almost whitish gray for better visibility */
+    height: 100vh;
+    transition: transform .3s ease-out;
+    transform: translateX(0%); /* Initially positioned off-screen */
+  }
+  
+  /* Controls the slide-in effect */
+  .showDropdown .custom-dropdown-content {
+    transform: translateX(0);
+  }
+  
+  .custom-dropdown-header, .custom-dropdown-links {
+    padding: 1rem; /* Consistent padding */
+    background-color: #edf2f7; /* Light header background for contrast */
+  }
+  
+  .custom-dropdown-links a {
+    display: block;
+    color: #374151; /* Gray color, ensuring readability */
+    padding: 0.75rem 1rem;
+    font-size: 1rem; /* Comfortable reading size */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean, modern font */
+    transition: background-color .25s ease-in-out;
+  }
+  
+  .custom-dropdown-links a:hover {
+    background-color: #e2e8f0; /* Light gray background on hover for distinction */
+    color: #1a202c; /* Slightly darker color for text on hover */
+  }
+  
+  .close-custom-dropdown {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.25rem; /* Visible but not overpowering */
+    cursor: pointer;
+  }
+  
+  .close-custom-dropdown:hover {
+    color: #4a5568; /* Slightly darker color on hover for the close icon */
+  }
+  

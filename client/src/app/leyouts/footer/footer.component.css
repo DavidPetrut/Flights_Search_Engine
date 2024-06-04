@@ -1,0 +1,44 @@
+
+.footer {
+    padding:20px;
+}
+
+.footer p {
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.footer-link {
+    text-decoration: none !important;
+    color: inherit;
+    font-weight: bold;
+}
+
+.bg-footer-img {
+    background: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    url('https://images.pexels.com/photos/2622179/pexels-photo-2622179.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat; 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    color: white; 
+    padding-bottom: 5%;
+}
+
+.logo-footer {
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+.logo-icon {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+.footer-content p {
+    margin-bottom: 8px;
+}
+
+.links-footer > span {
+    text-decoration: underline;
+}

@@ -1,0 +1,386 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+/* sing up functionality styles start here */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+
+:root {
+    --banner-advert: #F5F5F5;
+    --subtitle-advert: #FE6C0A;
+    --title-advert: #002C52;
+    --sub-subtitle: #DF443D;
+}
+
+.shadow-effect {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1)
+}
+
+.bg-color {
+    color: #F2F2F2
+}
+
+.search-button {
+    background-color: #FF6600;
+    color: white;
+    font-weight: 670;
+    border-radius: 25px 25px 25px 25px;
+    padding: 6px 20px 6px 20px;
+}
+
+
+
+.gradient-bg-welcome {
+  background-color: #460645;
+  background-image: 
+    radial-gradient(at 0% 0%, #460645 0, transparent 50%), 
+    radial-gradient(at 50% 0%, #8B0B24 0, transparent 50%), 
+    radial-gradient(at 100% 0%, #FF5450 0, transparent 50%);
+}
+
+.gradient-bg-services {
+  background-color: #460645;
+  background-image: 
+    radial-gradient(at 0% 0%, #460645 0, transparent 50%), 
+    radial-gradient(at 50% 100%, #A41830 0, transparent 50%);
+}
+
+.gradient-bg-transactions {
+  background-color: #460645;
+  background-image: 
+    radial-gradient(at 0% 100%, #460645 0, transparent 50%), 
+    radial-gradient(at 50% 0%, #A41830 0, transparent 50%);
+}
+
+.gradient-bg-footer {
+  background-color: #460645;
+  background-image: 
+    radial-gradient(at 0% 100%, #460645 0, transparent 53%), 
+    radial-gradient(at 50% 150%, #FF5450 0, transparent 50%);
+}
+
+.blue-glassmorphism {
+  background: rgba(21, 0, 21, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.white-glassmorphism {
+  background: rgba(236, 226, 226, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.eth-card {
+  border: 1px solid #550202;
+  background-color: #940303;
+  background-image: 
+    radial-gradient(at 83% 67%, #f08484 0, transparent 58%), 
+    radial-gradient(at 67% 20%, #f08484  0, transparent 59%), 
+    radial-gradient(at 88% 35%, #edf903 0, transparent 50%), 
+    radial-gradient(at 31% 91%, #f00d0d 0, transparent 52%), 
+    radial-gradient(at 27% 71%, #eb1a1a 0, transparent 49%), 
+    radial-gradient(at 74% 89%, #f30818 0, transparent 51%), 
+    radial-gradient(at 53% 75%, #fb1b1b 0, transparent 45%);
+}
+
+.eth-cardTransaction {
+  border: 1px solid #550202;
+  background-color: #940303;
+  background-image: 
+    radial-gradient(at 83% 67%, #d11212 0, transparent 58%), 
+    radial-gradient(at 67% 20%, #fc3636  0, transparent 59%), 
+    radial-gradient(at 100% 45%, #edf903 0, transparent 50%), 
+    radial-gradient(at 31% 91%, #fd2b2b 0, transparent 52%), 
+    radial-gradient(at 27% 71%, #eb1a1a 0, transparent 49%), 
+    radial-gradient(at 74% 89%, #f30818 0, transparent 51%), 
+    radial-gradient(at 53% 75%, #fb1b1b 0, transparent 45%);
+}
+
+.text-gradient {
+  font-weight: 900;
+  background-color: #fff;
+  background-image: 
+    radial-gradient(at 4% 36%, #ffffff 0, transparent 53%), 
+    radial-gradient(at 100% 60%, #FF5450 0, transparent 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradientTransactionPending {
+  font-weight: 900;
+  background-color: #ffffff;
+  background-image: 
+    radial-gradient(at 4% 36%, #ffffff 0, transparent 53%), 
+    radial-gradient(at 100% 60%, #8ffe20 0, transparent 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.special-1 {
+  margin-top: 4rem !important
+  }
+
+.welcomeSvg {
+  height: 15rem
+}
+
+
+.miniTitle {
+  font-weight: bold !important;
+}
+
+.specialParagraph {
+  text-wrap: nowrap;
+}
+
+.specialMargin {
+  margin-right: 10em !important
+}
+
+.signup {
+  background-color: rgb(183, 175, 176)
+}
+
+
+.formSignUpInputs {
+  padding-left: 25px !important;
+  padding-right: 25px !important
+}
+
+.formSignUpInputs label {
+  font-size: smaller;
+}
+
+.formContainer {
+  border: 1px solid #FF5450 !important;
+}
+
+.formContainerThick {
+  border: 2px solid #A8FE52 !important;
+}
+
+.buttonSignUp {
+  background-color: #F6504F !important;
+}
+
+.buttonSignUp:hover {
+  background-color: #ff7a7a !important;
+}
+
+/* user dropdown */
+.profile-container {
+  position: relative; /* Set the profile image container to relative */
+}
+
+.profileImageNavbar {
+  margin-left: 440px;
+  border: 4px solid #282737;
+  border: 2px solid white;
+}
+
+.dropdown-content {
+  font-size: smaller;
+  border: 3px solid #FF5450;
+  position: absolute;
+  top: 100%; /* Position the dropdown right below the profile image */
+  left: 72%;
+  right: 0;
+  z-index: 100; /* Ensure it's above other content */
+}
+
+.defaultProfileImage {
+  color: #460644 !important
+}
+
+.loginSingUpButtons {
+  font-size: 11px;
+  /* background-color: #f81b1b; */
+  border: 2px solid #C53947;
+  color: white;
+  font-weight: 600;
+}
+
+.loginSingUpButtons:hover {
+  background-color: #252638;
+  border: 2px solid #F6504F;
+  font-weight: bold;
+}
+
+/* this is only for CheckTransaction.tsx */
+
+.loginSingUpButtonsCheck {
+  font-size: 11px;
+  /* background-color: #f81b1b; */
+  border: 2px solid #ecf00a;
+  color: white;
+  font-weight: 600;
+}
+
+.loginSingUpButtonsCheck:hover {
+  background-color: #252638;
+  border: 2px solid #A8FE52;
+  font-weight: bold;
+  transform: scale(1.1);
+}
+
+.specialCheckoutBorder {
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+}
+
+
+
+.signUpContainer {
+  margin-top: 8.5rem;
+  margin-bottom: 10rem;
+}
+
+
+.dropDownWelcomeProfile {
+  border-bottom: 1px solid #F6504F;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.dropDownLogOut {
+  border-top: 3px solid #F6504F;
+  font-weight: 600;
+}
+
+.titleMain {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.titleMainSpecial {
+  font-weight: 10 !important;
+  color: rgb(253, 226, 226, 0.7);
+}
+
+.subTitle {
+  color: rgb(250, 250, 250, 0.8) !important;
+}
+
+.specialPadding {
+  padding: 40px 0px;
+}
+
+.specialPadding2 {
+  padding: 150px 0px 50px 0px;
+}
+
+.specialPadding3 {
+  padding-top: 380px;
+  padding-bottom: 300px;
+}
+
+.specialHorizontalLinePage {
+  margin: 30px 580px;
+}
+
+.specialHorizontalLinePage2 {
+  margin: 30px 520px;
+}
+
+.contactHorizontalLine{
+  background-color: #FF5450;
+  padding: 0.5px;
+}
+
+.buttonContact {
+  font-size: 15px;
+}
+
+.buttonContact:hover {
+  font-size: 15px;
+  background-color: #36363d;
+}
+
+
+.buttonProfileDescriptionDelete {
+  max-width: 7.1vw;
+  margin-top: 0px;
+}
+
+.profileDescriptionContainer {
+  margin: 100px;
+}
+
+.buttonProfileUpdate {
+  background-color: #430742;
+  font-weight: 700;
+  color: white;
+  border: 1px solid #FF5450;
+  font-size: 13px;
+}
+
+.buttonProfileUpdate:hover {
+  background-color: #4b2d4a;
+}
+
+
+
+/* Custom Scrollbar Styles */
+.profileDescriptionContainer::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.profileDescriptionContainer::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.profileDescriptionContainer::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.profileDescriptionContainer::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+
+
+
+
+/* media queries */
+
+@media (min-width: 1024px) { /* Corresponds to Tailwind's 'lg' breakpoint */
+  .loginSingUpButtonsSpecial {
+    margin-left: 500px
+  }
+
+  .signUpContainer {
+    margin-top: 3.5rem;
+    margin-bottom: 7rem;
+  }
+
+  .linksNavbar {
+    margin-left: 500px;
+  }
+
+
+  .dropdown-content {
+    font-size: smaller;
+    border: 3px solid #FF5450;
+    position: absolute;
+    top: 90%; /* Position the dropdown right below the profile image */
+    left: 88.5%;
+    right: 0;
+    z-index: 100; /* Ensure it's above other content */
+  }
+
+  .profileImageNavbar {
+    margin-left: 10px;
+  }
+
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* sign up  functionality finished here */

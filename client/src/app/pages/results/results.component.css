@@ -1,0 +1,53 @@
+.main-cont {
+    color: #6F6F6F;
+}
+
+.main-fast-filter {
+    background-color: white;
+    margin: 15px -4px;
+    margin-left: 4px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+
+.icons-fast-filter >* i{
+    font-size: 13px ;
+}
+
+.price {
+    font-size: 13px;
+}
+.active {
+    color: #FF6600;
+    border-bottom: 2px solid #FF6600;
+}
+
+
+
+.fast-filter {
+    padding: 20px 0px !important;
+}
+
+.fast-filter:hover {
+    background-color:#fff3f3;
+    cursor: pointer;
+}
+
+/* filters */
+.filter-1 {
+    margin-top: 20px;
+    text-wrap: nowrap !important;
+    width: 100%;
+}
+
+.search-button{
+    background-color: #F2F2F2;
+    color: #FF6600 !important;
+    font-weight: 500;
+    border: 1px solid #FF6600 !important;
+    padding: 7px 40px !important;
+}
+.search-button:hover{
+    background-color: #FF6600;
+    color: white !important;
+}

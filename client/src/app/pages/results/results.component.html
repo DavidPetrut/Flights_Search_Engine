@@ -1,0 +1,55 @@
+<app-second-search-engine></app-second-search-engine> 
+<div class="main-cont container">
+    <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8">
+          <div class="main-fast-filter shadow-effect"> 
+            <div class="icons-fast-filter row">
+
+
+                <div class="fast-filter col-lg-4 d-flex justify-content-center"  (click)="setSelectedFilter('BEST')">
+                    <div [class.active]="selectedFilter === FilterType.BEST">
+                        <i class="fa-solid fa-star me-2"></i>
+                        <span class="fw-bolder"> Best </span>
+                        <div class="d-flex justify-content-center">
+                            <span class="price"> {{ bestDuration }} - £{{ bestPrice }}  </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fast-filter col-lg-4 d-flex justify-content-center" (click)="setSelectedFilter('LOWEST_PRICE')">
+                    <div [class.active]="selectedFilter === FilterType.LOWEST_PRICE">
+                        <i class="fa-solid fa-sack-dollar me-2"></i> 
+                        <span class="fw-bolder"> Lowest Price</span>
+                        <div class="d-flex justify-content-center">
+                            <span class="price"> £{{ bestPrice }} </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fast-filter col-lg-4 d-flex justify-content-center" (click)="setSelectedFilter('TIME_SAVING')">
+                    <div [class.active]="selectedFilter === FilterType.TIME_SAVING">
+                        <i class="fa-solid fa-business-time me-2"></i> 
+                        <span class="fw-bolder"> Time Saving</span>
+                        <div class="d-flex justify-content-center">
+                            <span class="price"> {{ bestDuration }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+         <div>
+            <app-ticket *ngIf="!isSingleFlight" [combinedTickets]="combinedTickets"></app-ticket>
+            <app-ticket *ngIf="isSingleFlight" [singleTickets]="displayedTickets"></app-ticket>
+            <!-- <app-ticket [filter]="selectedFilter" [combinedTickets]="displayedTickets"></app-ticket> -->
+            <div class="d-flex justify-content-center mb-4">
+              <button class="search-button btn text-white mt-3" (click)="loadMoreTickets()">Load more</button>
+            </div>
+         </div>
+        </div>
+        <div class="col-lg-2">
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
